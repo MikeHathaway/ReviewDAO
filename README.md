@@ -1,5 +1,9 @@
 # Review DAO
 
+TODO:
+- Add CheckBalance Component that reads token balance of a given address, on button click
+- Move away from hardcoding ABI
+
 
 ## Architecture
 **IPFS**
