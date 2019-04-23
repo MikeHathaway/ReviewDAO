@@ -13,7 +13,7 @@ export default function CheckBalance(props){
 			onTap={checkBalance(props.address)} 
 			className={style.checkBalance}
 		>
-		Check Your Token Balance
+			Check Your Token Balance
 		</Button>	
 	)
 }
