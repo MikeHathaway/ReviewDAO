@@ -5,6 +5,7 @@ import CheckBalance from './CheckBalance/CheckBalance';
 import Header from './Header/index'
 
 class App extends Component {
+
   componentDidMount() {
     let web3;
     if (typeof web3 !== 'undefined') {

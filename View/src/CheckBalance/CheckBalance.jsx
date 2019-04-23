@@ -4,13 +4,15 @@ import style from './index.css'
 
 export default function CheckBalance(props){
 
-	const checkBalance = (address) => {
-		return ()=>{};
-	}
+	// const checkBalance = (address) => {
+	// 	return () => {
+	// 		return {}
+	// 	};
+	// }
 
 	return (
 		<Button 
-			onTap={checkBalance(props.address)} 
+			// onTap={checkBalance(props.address)} 
 			className={style.checkBalance}
 		>
 			Check Your Token Balance
