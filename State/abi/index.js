@@ -9,7 +9,7 @@ const abi = JSON.parse(abiJson);
 
 const compiledContract = fs.readFileSync("../build/contracts/")
 
-// write contract json file
+// write contract json file 
 const abidir = 'src/Store/abi/';
 if (!fs.existsSync(abidir)){
     fs.mkdirSync(abidir);

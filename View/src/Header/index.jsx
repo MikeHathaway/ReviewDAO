@@ -15,7 +15,9 @@ export default function Header (props) {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-            Learn React
+            <p>
+                Your balance: {props.mycurrency.token}
+            </p>
             </a>
         </header>
     )

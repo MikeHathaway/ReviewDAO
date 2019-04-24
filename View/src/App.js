@@ -21,13 +21,22 @@ class App extends Component {
 
     const ReviewDAOContract = web3.eth.Contract(abi,'0x2F6aA9462D77CcAACe7959652057Ce186e3076a0');
 
+    // this is a suboptimal place to connect web3. Lifecycle is different on Chrome, and global will not be defined on mount.
+    global.web3 = web3;
   }
 
   render() {
+    const {
+      mycurrency,
+      setAccountInfo
+    } = this.props;
+    // cosnt web3 = this.props.web3Redux.web3('eth');
+    // if (!web3 || !web3.isConnected()) { return <p>Connecting...</p>; }
+    console.log("props", this.props);
     return (
       <div className="App">
-        <Header />
-        <CheckBalance />
+        <Header mycurrency={mycurrency} />
+        <CheckBalance setAccountInfo={setAccountInfo} />
       </div>
     );
   }

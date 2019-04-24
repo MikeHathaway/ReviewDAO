@@ -1,11 +1,13 @@
 const web3 = (global as any).web3;
 
+console.log(web3, global)
+
 // Import ABI from compiled smart contracts
 import reviewDAOAbi from "./abi/DappToken.json"
 // const parsedAbi = JSON.parse(reviewDAOAbi);
 
 /** Connect to Smart Contract */
-const contractAddr = '0x09233d0f7c706D7F9B0Cba18687fB16c49EcD65d';
+const contractAddr = '0x2F6aA9462D77CcAACe7959652057Ce186e3076a0';
 
 const tokenContract: any = getContract(reviewDAOAbi.abi, contractAddr);
 
