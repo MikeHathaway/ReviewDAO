@@ -38,7 +38,7 @@ export async function loadAccountInfo(dispatch: Dispatch<ActionTypes>) {
 
 export async function transferToken(dispatch: Dispatch<ActionTypes>, to: string, amount: number) {
 
-    await web3client.transferToken(to, amount);
+    await web3client.transferToken(amount, to);
 
     await loadAccountInfo(dispatch);
 

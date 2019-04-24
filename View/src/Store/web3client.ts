@@ -1,16 +1,17 @@
-const web3 = (window as any).web3;
+const web3 = (global as any).web3;
+
+// Import ABI from compiled smart contracts
+import reviewDAOAbi from "./abi/DappToken.json"
+// const parsedAbi = JSON.parse(reviewDAOAbi);
 
 /** Connect to Smart Contract */
 const contractAddr = '0x09233d0f7c706D7F9B0Cba18687fB16c49EcD65d';
 
-import MyCurrency from "../abi/MyCurrency";
-
-const tokenContract: any = getContract(MyCurrency, contractAddr);
+const tokenContract: any = getContract(reviewDAOAbi.abi, contractAddr);
 
 export function getContract(abi: object, address: string) {
     return web3.eth.contract(abi).at(address);
 }
-
 
 /** Get Account Information */
 export function getAccount(): string {
