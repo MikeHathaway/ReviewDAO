@@ -3,10 +3,19 @@ import './App.css';
 import Web3 from "web3";
 import CheckBalance from './CheckBalance/CheckBalance';
 import Header from './Header/index'
+import Loading from './Loading/index'
 
 class App extends Component {
 
   componentDidMount() {
+    const {
+      connectContract
+    } = this.props;
+
+    connectContract();
+
+    // TODO: Abstract web3 connection to the connectContract middleware
+
     let web3;
     if (typeof web3 !== 'undefined') {
       web3 = new Web3(web3.currentProvider);
@@ -27,14 +36,14 @@ class App extends Component {
 
   render() {
     const {
+      isLoading,
       mycurrency,
       setAccountInfo
     } = this.props;
-    // cosnt web3 = this.props.web3Redux.web3('eth');
-    // if (!web3 || !web3.isConnected()) { return <p>Connecting...</p>; }
-    console.log("props", this.props);
+
     return (
       <div className="App">
+        <Loading isLoading={isLoading} />
         <Header mycurrency={mycurrency} />
         <CheckBalance setAccountInfo={setAccountInfo} />
       </div>

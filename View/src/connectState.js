@@ -1,5 +1,8 @@
 import { connect } from "react-redux";
-import {setAccountInfo} from "./Store/actions";
+import {
+    setAccountInfo,
+    connectContract
+} from "./Store/actions";
 
 export default function connectState (Component) {
     const mapStateToProps = (state) => {
@@ -7,7 +10,8 @@ export default function connectState (Component) {
     };
     
     const actions = {
-        setAccountInfo
+        setAccountInfo,
+        connectContract
     }
     return connect (mapStateToProps, actions)(Component)
 }

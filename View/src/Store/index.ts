@@ -2,8 +2,11 @@ import { combineReducers, createStore, Dispatch } from 'redux';
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import * as web3client from './web3client';
-
-export const SET_ACCOUNT_INFO = 'SET_ACCOUNT_INFO';
+import {
+    SET_ACCOUNT_INFO,
+    CONNECT_CONTRACT,
+    connectContractSuccess
+} from './actions'
 
 export type ActionTypes = ActionType<typeof actions>;
 
@@ -21,6 +24,11 @@ export function sharesReducer(state: IMyCurrency = {account: '', token: 0}, acti
     switch (action.type) {
         case SET_ACCOUNT_INFO:
             return { ...state, ...action.payload };
+        // case CONNECT_CONTRACT:
+        //     return { ...state, ...action.payload, isLoading: true};
+        // case CONNECT_CONTRACT_SUCCESS:
+        //     connectContractSuccess()
+        //     return { ...state, isLoading: false } 
             default:
                 return state;
         }
