@@ -1,6 +1,6 @@
 const web3 = (global as any).web3;
 
-console.log(web3, global)
+console.log('web3 client', web3, global)
 
 // Import ABI from compiled smart contracts
 import reviewDAOAbi from "./abi/DappToken.json"

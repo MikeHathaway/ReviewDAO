@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga'
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import mySaga from './sagas'
-import * as web3client from './web3client';
+// import * as web3client from './web3client';
 import {
     SET_ACCOUNT_INFO,
     CONNECT_CONTRACT,
@@ -25,6 +25,7 @@ export interface IRootState {
 }
 
 // TODO: Modify type schema
+// TODO: Add reducer for handling CONNECT_CONTRACT_SUCCESS
 
 export function sharesReducer(state: IMyCurrency = {account: '', token: 0}, action: ActionTypes): IMyCurrency {
 
@@ -41,23 +42,23 @@ export function sharesReducer(state: IMyCurrency = {account: '', token: 0}, acti
         }
 }
 
-export async function loadAccountInfo(dispatch: Dispatch<ActionTypes>) {
+// export async function loadAccountInfo(dispatch: Dispatch<ActionTypes>) {
 
-    const account = web3client.getAccount();
+//     const account = web3client.getAccount();
 
-    const token = await web3client.getToken(account);
+//     const token = await web3client.getToken(account);
 
-    dispatch(actions.setAccountInfo(account, token));
+//     dispatch(actions.setAccountInfo(account, token));
 
-}
+// }
 
-export async function transferToken(dispatch: Dispatch<ActionTypes>, to: string, amount: number) {
+// export async function transferToken(dispatch: Dispatch<ActionTypes>, to: string, amount: number) {
 
-    await web3client.transferToken(amount, to);
+//     await web3client.transferToken(amount, to);
 
-    await loadAccountInfo(dispatch);
+//     await loadAccountInfo(dispatch);
 
-}
+// }
 
 const store = createStore<IRootState, any, any, any>(
     combineReducers({
