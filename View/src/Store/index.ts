@@ -1,12 +1,17 @@
-import { combineReducers, createStore, Dispatch } from 'redux';
+import { combineReducers, createStore, Dispatch, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga'
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
+import mySaga from './sagas'
 import * as web3client from './web3client';
 import {
     SET_ACCOUNT_INFO,
     CONNECT_CONTRACT,
     connectContractSuccess
 } from './actions'
+
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
 
 export type ActionTypes = ActionType<typeof actions>;
 
@@ -18,6 +23,8 @@ export interface IMyCurrency {
 export interface IRootState {
     mycurrency: IMyCurrency
 }
+
+// TODO: Modify type schema
 
 export function sharesReducer(state: IMyCurrency = {account: '', token: 0}, action: ActionTypes): IMyCurrency {
 
@@ -55,6 +62,10 @@ export async function transferToken(dispatch: Dispatch<ActionTypes>, to: string,
 const store = createStore<IRootState, any, any, any>(
     combineReducers({
         mycurrency: sharesReducer
-    }));
+    }), 
+    applyMiddleware(sagaMiddleware));
+
+// Start the Saga
+sagaMiddleware.run(mySaga)
 
 export default store;

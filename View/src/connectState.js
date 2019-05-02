@@ -13,5 +13,6 @@ export default function connectState (Component) {
         setAccountInfo,
         connectContract
     }
+    
     return connect (mapStateToProps, actions)(Component)
 }
