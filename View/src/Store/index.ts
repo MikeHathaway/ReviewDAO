@@ -7,6 +7,7 @@ import mySaga from './sagas'
 import {
     SET_ACCOUNT_INFO,
     CONNECT_CONTRACT,
+    CONNECT_CONTRACT_SUCCESS,
     connectContractSuccess
 } from './actions'
 
@@ -18,6 +19,7 @@ export type ActionTypes = ActionType<typeof actions>;
 export interface IMyCurrency {
     account: string
     token: number
+    isLoading: boolean
 }
 
 export interface IRootState {
@@ -27,18 +29,17 @@ export interface IRootState {
 // TODO: Modify type schema
 // TODO: Add reducer for handling CONNECT_CONTRACT_SUCCESS
 
-export function sharesReducer(state: IMyCurrency = {account: '', token: 0}, action: ActionTypes): IMyCurrency {
+export function sharesReducer(state: IMyCurrency = {account: '', token: 0, isLoading: false}, action: ActionTypes): IMyCurrency {
 
     switch (action.type) {
         case SET_ACCOUNT_INFO:
             return { ...state, ...action.payload };
-        // case CONNECT_CONTRACT:
-        //     return { ...state, ...action.payload, isLoading: true};
-        // case CONNECT_CONTRACT_SUCCESS:
-        //     connectContractSuccess()
-        //     return { ...state, isLoading: false } 
-            default:
-                return state;
+        case CONNECT_CONTRACT:
+            return { ...state, ...action.payload, isLoading: true };
+        case CONNECT_CONTRACT_SUCCESS:
+            return { ...state, ...action.payload, isLoading: false } 
+        default:
+            return state;
         }
 }
 

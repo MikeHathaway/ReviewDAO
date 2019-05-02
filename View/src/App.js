@@ -11,15 +11,21 @@ class App extends Component {
       connectContract
     } = this.props;
 
+    // Use Web3 to connect to Ethereum Smart Contract
     connectContract();
   }
 
   render() {
     const {
-      isLoading,
       mycurrency,
-      setAccountInfo
+      mycurrency: {
+        isLoading
+      },
+      setAccountInfo,
+      web3
     } = this.props;
+
+    console.log("web3 props", this.props)
 
     return (
       <div className="App">

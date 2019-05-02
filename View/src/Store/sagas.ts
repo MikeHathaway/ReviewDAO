@@ -1,10 +1,13 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { ActionType } from 'typesafe-actions';
 
-import * as actions from './actions';
+import {
+    connectContractSuccess,
+    connectContractFailure
+} from './actions'
 import getWeb3 from './getWeb3';
 
-export type ActionTypes = ActionType<typeof actions>;
+export type ActionTypes = ActionType<typeof connectContractFailure>;
 
 // Import ABI from compiled smart contracts
 import reviewDAOAbi from "./abi/DappToken.json"
@@ -18,15 +21,19 @@ function* connectContract(action: ActionTypes) {
     try {
 
         const web3 = yield call(getWeb3);
+        console.log(web3);
+
+        // investigate web3 interface, below call is failing
         const accounts = yield call(web3.eth.getAccounts());
         const ReviewDAOContract = web3.eth.Contract(reviewDAOAbi,'0x2F6aA9462D77CcAACe7959652057Ce186e3076a0');
 
-        yield put({type: "CONNECT_CONTRACT_SUCCESS", web3, accounts, ReviewDAOContract});        
+        console.log("Retreived information", ReviewDAOContract, accounts)
+        yield put(connectContractSuccess(web3, accounts, ReviewDAOContract));        
 
         // web3.eth.defaultAccount = web3.eth.accounts[0];
 
     } catch (e) {
-        yield put({type: "CONNECT_CONTRACT_FAILURE", message: e.message});
+        yield put(connectContractFailure(e));
     }
 }
 
