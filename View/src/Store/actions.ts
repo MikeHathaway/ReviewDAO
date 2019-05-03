@@ -24,7 +24,8 @@ export function connectWeb3(account: string, token: number) {
 export function connectWeb3Success(web3: any, accounts: any, ReviewDAOContract: object) {
     return action(CONNECT_WEB3_SUCCESS, {
         web3,
-        accounts
+        accounts,
+        ReviewDAOContract
     });
 }
 
