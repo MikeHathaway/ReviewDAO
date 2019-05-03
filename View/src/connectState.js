@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {
     setAccountInfo,
-    connectContract
+    connectWeb3
 } from "./Store/actions";
 
 export default function connectState (Component) {
@@ -11,8 +11,8 @@ export default function connectState (Component) {
     
     const actions = {
         setAccountInfo,
-        connectContract
+        connectWeb3
     }
-    
+
     return connect (mapStateToProps, actions)(Component)
 }

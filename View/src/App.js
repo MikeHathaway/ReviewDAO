@@ -8,11 +8,11 @@ class App extends Component {
 
   componentDidMount() {
     const {
-      connectContract
+      connectWeb3
     } = this.props;
 
     // Use Web3 to connect to Ethereum Smart Contract
-    connectContract();
+    connectWeb3();
   }
 
   render() {
