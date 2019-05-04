@@ -19,7 +19,7 @@ function getDefaultAccount(web3: any){
 }
 
 function connectContract(web3: any){
-    return Promise.resolve(web3.eth.Contract(abi,'0x2F6aA9462D77CcAACe7959652057Ce186e3076a0'));
+    return Promise.resolve(web3.eth.Contract(abi,'0xe7c5595A9c65Dc3A60F7b82031Fc24aabB28c6f0'));
 }
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -29,6 +29,10 @@ function* connectWeb3(action: ActionTypes) {
         const web3 = yield call(getWeb3);
         const accounts = yield call(getDefaultAccount, web3);
         const ReviewDAOContract = yield call(connectContract, web3);
+
+        // Add this as a saga listening in on transfer events being dispatched from the UI
+        // Promise
+        console.log(ReviewDAOContract.methods.approve())
 
         yield put(connectWeb3Success(web3, accounts, ReviewDAOContract));        
 
