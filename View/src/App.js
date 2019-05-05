@@ -21,7 +21,7 @@ class App extends Component {
       mycurrency: {
         isLoading
       },
-      setAccountInfo,
+      checkBalance,
       web3
     } = this.props;
 
@@ -31,7 +31,7 @@ class App extends Component {
       <div className="App">
         <Loading isLoading={isLoading} />
         <Header mycurrency={mycurrency} />
-        <CheckBalance setAccountInfo={setAccountInfo} />
+        <CheckBalance checkBalance={checkBalance} />
       </div>
     );
   }

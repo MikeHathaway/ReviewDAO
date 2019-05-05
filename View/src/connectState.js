@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import {
-    setAccountInfo,
+    checkBalance,
     connectWeb3
 } from "./Store/actions";
 
@@ -10,7 +10,7 @@ export default function connectState (Component) {
     };
     
     const actions = {
-        setAccountInfo,
+        checkBalance,
         connectWeb3
     }
 

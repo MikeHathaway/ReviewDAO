@@ -2,9 +2,9 @@ import { combineReducers, createStore, Dispatch, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga'
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
-import mySaga from './sagas'
+import rootSaga from './sagas'
 import {
-    SET_ACCOUNT_INFO,
+    CHECK_BALANCE_SUCCESS,
     CONNECT_WEB3,
     CONNECT_WEB3_SUCCESS,
 } from './actions'
@@ -28,7 +28,7 @@ export interface IRootState {
 
 export function sharesReducer(state: IMyCurrency = {account: '', token: 0, isLoading: false}, action: ActionTypes): IMyCurrency {
     switch (action.type) {
-        case SET_ACCOUNT_INFO:
+        case CHECK_BALANCE_SUCCESS:
             return { ...state, ...action.payload };
         case CONNECT_WEB3:
             return { ...state, ...action.payload, isLoading: true };
@@ -46,6 +46,6 @@ const store = createStore<IRootState, any, any, any>(
     applyMiddleware(sagaMiddleware));
 
 // Start the Saga
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(rootSaga)
 
 export default store;
