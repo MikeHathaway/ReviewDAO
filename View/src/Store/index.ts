@@ -28,12 +28,12 @@ export interface IRootState {
 
 export function sharesReducer(state: IMyCurrency = {account: '', token: 0, isLoading: false}, action: ActionTypes): IMyCurrency {
     switch (action.type) {
-        case CHECK_BALANCE_SUCCESS:
-            return { ...state, ...action.payload };
         case CONNECT_WEB3:
             return { ...state, ...action.payload, isLoading: true };
         case CONNECT_WEB3_SUCCESS:
-            return { ...state, ...action.payload, isLoading: false } 
+            return { ...state, ...action.payload, isLoading: false };
+        case CHECK_BALANCE_SUCCESS:
+            return { ...state, ...action.payload };            
         default:
             return state;
     }

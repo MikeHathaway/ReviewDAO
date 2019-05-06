@@ -21,8 +21,7 @@ class App extends Component {
       mycurrency: {
         isLoading
       },
-      checkBalance,
-      web3
+      checkBalance
     } = this.props;
 
     console.log("web3 props", this.props)
