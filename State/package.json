@@ -12,6 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fs": "0.0.1-security"
+    "dotenv": "^8.0.0",
+    "fs": "0.0.1-security",
+    "openzeppelin-solidity": "2.2.0",
+    "truffle-hdwallet-provider": "^1.0.8"
   }
 }
