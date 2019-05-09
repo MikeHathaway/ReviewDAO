@@ -22,6 +22,7 @@ const abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","t
     Use Web3.js to connect to Ethereum blockchain and store contract instance to state
 */
 // getAccounts() is returning the set of addresses associated with Ganache node
+// https://github.com/MetaMask/metamask-extension/issues/3488
 function getDefaultAccount(web3: any){
     console.log("get default account", web3.eth.accounts)
     return Promise.resolve(web3.eth.getAccounts());

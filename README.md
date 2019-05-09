@@ -1,11 +1,14 @@
 # Review DAO
 
+A consortium for the generation and distribution of product reviews.
+
 TODO:
 - Add CheckBalance Component that reads token balance of a given address, on button click
 - Move away from hardcoding ABI
 
 
 ## Architecture
+
 **IPFS**
 - Hosting static Assets
 

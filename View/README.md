@@ -1,3 +1,14 @@
+**Todos**
+- call contract constructor to mint ERC20 and distribute to set addresses
+- Call approve function 
+
+Research
+-https://medium.freecodecamp.org/create-an-ethereum-token-using-open-source-contracts-open-zeppelin-1e132e6233ed
+
+
+===
+
+**Dev Tooling**
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
