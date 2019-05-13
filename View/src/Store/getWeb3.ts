@@ -1,16 +1,16 @@
 import Web3 from "web3";
 
 declare global {
-    interface Window { web3: any; }
+    interface Window { web3: any, ethereum: any }
 }
 
 const getWeb3 = () =>
     new Promise((resolve, reject) => {
         window.addEventListener("load", () => {
-            let web3 = window.web3;
+            let web3 = window.ethereum
             const alreadyInjected = typeof web3 !== "undefined";
             if (alreadyInjected) {
-                web3 = new Web3(web3.currentProvider);
+                web3 = new Web3(web3);
                 console.log("Injected web3 detected.");
                 resolve(web3);
             } else {

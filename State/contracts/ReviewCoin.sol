@@ -6,6 +6,7 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20Burnabl
 
 // https://medium.freecodecamp.org/create-an-ethereum-token-using-open-source-contracts-open-zeppelin-1e132e6233ed
 // https://blog.zeppelin.solutions/a-gentle-introduction-to-ethereum-programming-part-3-abdd9644d0c2
+// https://github.com/ethereum/wiki/wiki/JavaScript-API#contract-events
 
 contract ReviewCoin is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable {
 
@@ -16,7 +17,7 @@ contract ReviewCoin is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable {
     )
         ERC20Burnable()
         ERC20Mintable()
-        ERC20Detailed("Review Coin", "RDAO", 18)
+        ERC20Detailed(name, symbol, decimals)
         ERC20()
         public
     {}

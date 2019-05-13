@@ -20,10 +20,10 @@ export function connectWeb3(account: string, token: number) {
     });
 }
 
-export function connectWeb3Success(web3: any, accounts: any, ReviewDAOContract: object) {
+export function connectWeb3Success(web3: any, account: any, ReviewDAOContract: object) {
     return action(CONNECT_WEB3_SUCCESS, {
         web3,
-        accounts,
+        account,
         ReviewDAOContract
     });
 }
@@ -48,13 +48,12 @@ export function transferTokenFailure(error: object) {
     });
 }
 
-export function checkBalance(account: string) {
-    return action(CHECK_BALANCE, {
-        account
-    });
+export function checkBalance() {
+    return action(CHECK_BALANCE, {});
 }
 
 export function checkBalanceSuccess(account: string, token: number) {
+    console.log("firing check balance success")
     return action(CHECK_BALANCE_SUCCESS, {
         account,
         token
