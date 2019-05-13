@@ -8,7 +8,7 @@ export default function CheckBalance({checkBalance}){
 		<Button
 			variant="primary" size="lg" 
 			onClick={checkBalance} 
-			className={styles.checkBalance}
+			// className={styles.checkBalance}
 		>
 			Check Your Token Balance
 		</Button>	

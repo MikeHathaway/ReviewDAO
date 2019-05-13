@@ -81,15 +81,26 @@ function getBalanceForAddress(address: string, web3: any) {
     return Promise.resolve(web3.eth.getBalance(address));
 }
 
+function getTokenBalanceForAddress(address: string, ReviewDAOContract: any, web3: any) {
+  const tokenBalance = ReviewDAOContract.methods.balanceOf(address).call({from: address})
+    .then((balance: any) => {
+      // console.log("dank balance", web3.utils.fromWei(balance.toNumber(), "ether"))
+      return balance.toNumber()
+    })
+  return Promise.resolve(tokenBalance);
+}
+
 // TODO: Figureo out why account has become an action
 function* checkBalance(action: ActionTypes) {
     try {
         const web3 = yield select(getWeb3FromState);
         const account = yield select(getAccountFromState);
-        
-        const balance = yield call(getBalanceForAddress, account, web3)
-        
-        yield put(checkBalanceSuccess(account, balance));
+        const ReviewDAOContract = yield select(getContractFromState);
+
+        const ethBalance = yield call(getBalanceForAddress, account, web3)
+        const tokenBalance = yield call(getTokenBalanceForAddress, account, ReviewDAOContract, web3);
+
+        yield put(checkBalanceSuccess(account, tokenBalance));
     } catch (error) {
         yield put(checkBalanceFailure(error));
     }

@@ -3,6 +3,7 @@ import './App.css';
 import CheckBalance from './CheckBalance/CheckBalance';
 import Header from './Header/index'
 import Loading from './Loading/index'
+import SendTransaction from './SendTransaction/SendTransaction'
 
 class App extends Component {
 
@@ -21,7 +22,8 @@ class App extends Component {
       mycurrency: {
         isLoading
       },
-      checkBalance
+      checkBalance,
+      transferToken
     } = this.props;
 
     console.log("web3 props", this.props)
@@ -31,6 +33,7 @@ class App extends Component {
         <Loading isLoading={isLoading} />
         <Header mycurrency={mycurrency} />
         <CheckBalance checkBalance={checkBalance} />
+        <SendTransaction transferToken={transferToken} />
       </div>
     );
   }
