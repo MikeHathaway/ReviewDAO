@@ -7,14 +7,16 @@ import {
     transferTokenSuccess,
     transferTokenFailure,
     checkBalanceSuccess,
-    checkBalanceFailure
+    checkBalanceFailure,
+    mintTokensSuccess,
+    mintTokensFailure
 } from './actions'
 import getWeb3 from './getWeb3';
 
 export type ActionTypes = ActionType<typeof connectWeb3Success>;
 
 // Import ABI from compiled smart contracts
-import reviewDAOAbi from "./abi/DappToken.json"
+import reviewCoinABI from "./abi/ReviewCoin.json"
 
 /** 
     Use Web3.js to connect to Ethereum blockchain and store contract instance to state
@@ -31,7 +33,7 @@ function getDefaultAccount(web3: any){
 
 function connectContract(web3: any){
     // Contract ABI, Contract Address
-    return Promise.resolve(web3.eth.Contract(reviewDAOAbi.abi,'0x83b644E52822EB120b4d68FdAb639e04C9483000'));
+    return Promise.resolve(web3.eth.Contract(reviewCoinABI.abi,'0x83b644E52822EB120b4d68FdAb639e04C9483000'));
 }
 
 function* connectWeb3(action: ActionTypes) {
@@ -73,6 +75,40 @@ function* transfer(action: ActionTypes, ReviewDAOContract: any) {
     }
 }
 
+/** 
+    Add tokens to users address
+*/
+function mint(account: string, ReviewDAOContract: any) {
+  const tokensToMint = 10
+  // TODO: Call mint function from MinterRole
+  const mintPromise = ReviewDAOContract.methods.mint(account, tokensToMint).call({from: account})
+    .then((mintStatus: boolean) => {
+      console.log("Token Minting Successful")
+      return tokensToMint;
+    })
+    .catch((error: Error) => {
+      console.error("You do not have permission to mint tokens")
+      return error;
+    });
+  return Promise.resolve(mintPromise);
+}
+
+function* mintTokens(action: ActionTypes) {
+  try {
+    console.log("minting")
+    const account = yield select(getAccountFromState);
+    const ReviewDAOContract = yield select(getContractFromState);
+
+    console.log("mint parameters", account, ReviewDAOContract);
+    const mintedTokens = yield call(mint, account, ReviewDAOContract);
+
+    console.log("minted tokens: ", mintedTokens)
+    yield put(mintTokensSuccess(mintedTokens));
+  } catch (error) {
+    yield put(mintTokensFailure(error));
+  }
+}
+
 
 /** 
     Effects for checking an accounts balance
@@ -84,13 +120,12 @@ function getBalanceForAddress(address: string, web3: any) {
 function getTokenBalanceForAddress(address: string, ReviewDAOContract: any, web3: any) {
   const tokenBalance = ReviewDAOContract.methods.balanceOf(address).call({from: address})
     .then((balance: any) => {
-      // console.log("dank balance", web3.utils.fromWei(balance.toNumber(), "ether"))
+      // console.log("converted balance from BigNumber", web3.utils.fromWei(balance.toNumber(), "ether"))
       return balance.toNumber()
     })
   return Promise.resolve(tokenBalance);
 }
 
-// TODO: Figureo out why account has become an action
 function* checkBalance(action: ActionTypes) {
     try {
         const web3 = yield select(getWeb3FromState);
@@ -125,6 +160,7 @@ function* rootSaga() {
     yield takeEvery("CONNECT_WEB3", connectWeb3);
     yield takeEvery("TRANSFER", transfer, ReviewDAOContract);
     yield takeEvery("CHECK_BALANCE", checkBalance);
+    yield takeEvery("MINT_TOKENS", mintTokens);
 }
 
 export default rootSaga;

@@ -13,6 +13,10 @@ export const CHECK_BALANCE = 'CHECK_BALANCE';
 export const CHECK_BALANCE_SUCCESS = 'CHECK_BALANCE_SUCCESS';
 export const CHECK_BALANCE_FAILURE = 'CHECK_BALANCE_FAILURE';
 
+export const MINT_TOKENS = 'MINT_TOKENS';
+export const MINT_TOKENS_SUCCESS = 'MINT_TOKENS_SUCCESS';
+export const MINT_TOKENS_FAILURE = 'MINT_TOKENS_FAILURE';
+
 export function connectWeb3(account: string, token: number) {
     return action(CONNECT_WEB3, {
         account,
@@ -48,12 +52,27 @@ export function transferTokenFailure(error: object) {
     });
 }
 
+export function mintTokens() {
+    return action(MINT_TOKENS, {});
+}
+
+export function mintTokensSuccess(token: number) {
+    return action(MINT_TOKENS_SUCCESS, {
+        token
+    });
+}
+
+export function mintTokensFailure(error: object) {
+    return action(MINT_TOKENS_FAILURE, {
+        error
+    });
+}
+
 export function checkBalance() {
     return action(CHECK_BALANCE, {});
 }
 
 export function checkBalanceSuccess(account: string, token: number) {
-    console.log("firing check balance success")
     return action(CHECK_BALANCE_SUCCESS, {
         account,
         token

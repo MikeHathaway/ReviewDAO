@@ -23,7 +23,8 @@ class App extends Component {
         isLoading
       },
       checkBalance,
-      transferToken
+      transferToken,
+      mintTokens
     } = this.props;
 
     console.log("web3 props", this.props)
@@ -32,7 +33,7 @@ class App extends Component {
       <div className="App">
         <Loading isLoading={isLoading} />
         <Header mycurrency={mycurrency} />
-        <CheckBalance checkBalance={checkBalance} />
+        <CheckBalance checkBalance={checkBalance} mintTokens={mintTokens} />
         <SendTransaction transferToken={transferToken} />
       </div>
     );
