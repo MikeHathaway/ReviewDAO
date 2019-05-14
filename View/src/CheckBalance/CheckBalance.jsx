@@ -13,6 +13,7 @@ export default function CheckBalance({checkBalance, mintTokens}){
 			}} 
 			// className={styles.checkBalance}
 		>
+		{/* Listen for mint contract event */}
 			Check Your Token Balance
 		</Button>	
 	)

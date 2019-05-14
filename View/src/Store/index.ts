@@ -2,7 +2,7 @@ import { combineReducers, createStore, Dispatch, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga'
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
-import rootSaga from './sagas'
+import rootSaga from './sagas/index'
 import {
     CHECK_BALANCE_SUCCESS,
     CONNECT_WEB3,
