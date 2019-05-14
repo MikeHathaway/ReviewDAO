@@ -19,6 +19,9 @@ contract ReviewCoin is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable {
         ERC20Mintable()
         ERC20Detailed(name, symbol, decimals)
         ERC20()
+
+        // TODO: Tie constructor caller to DAO
+        MinterRole()
         public
     {}
 }

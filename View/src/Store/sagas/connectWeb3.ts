@@ -11,7 +11,7 @@ import {
 import reviewCoinABI from "../abi/ReviewCoin.json"
 
 declare global {
-    interface Window { web3: any, ethereum: any }
+    interface Window { web3: Web3, ethereum: any }
 }
 
 
@@ -47,7 +47,7 @@ function getDefaultAccount(web3: any){
 
 function connectContract(web3: any){
     // Contract ABI, Contract Address
-    return Promise.resolve(web3.eth.Contract(reviewCoinABI.abi,'0x83b644E52822EB120b4d68FdAb639e04C9483000'));
+    return Promise.resolve(web3.eth.Contract(reviewCoinABI.abi,'0x441312C6737c611f0e537D25b1978361c1BdD732'));
 }
 
 export default function* connectWeb3(action: ActionTypes) {

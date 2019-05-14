@@ -19,7 +19,7 @@ function getBalanceForAddress(address: string, web3: any) {
     return Promise.resolve(web3.eth.getBalance(address));
 }
 
-function getTokenBalanceForAddress(address: string, ReviewDAOContract: any, web3: any) {
+function getTokenBalanceForAddress(address: string, ReviewDAOContract: any) {
   const tokenBalance = ReviewDAOContract.methods.balanceOf(address).call({from: address})
     .then((balance: any) => {
       // console.log("converted balance from BigNumber", web3.utils.fromWei(balance.toNumber(), "ether"))
@@ -35,7 +35,7 @@ export default function* checkBalance(action: ActionTypes) {
         const ReviewDAOContract = yield select(getContractFromState);
 
         const ethBalance = yield call(getBalanceForAddress, address, web3)
-        const tokenBalance = yield call(getTokenBalanceForAddress, address, ReviewDAOContract, web3);
+        const tokenBalance = yield call(getTokenBalanceForAddress, address, ReviewDAOContract);
 
         yield put(checkBalanceSuccess(address, tokenBalance));
     } catch (error) {

@@ -39,17 +39,17 @@ function mint(account: string, ReviewDAOContract: any) {
     return Promise.resolve(mintPromise);
   }
   
-  export default function* mintTokens(action: ActionTypes) {
-    try {
-      const account = yield select(getAccountFromState);
-      const ReviewDAOContract = yield select(getContractFromState);
-  
-      console.log("mint parameters", account, ReviewDAOContract);
-      const mintedTokens = yield call(mint, account, ReviewDAOContract);
-  
-      console.log("minted tokens: ", mintedTokens)
-      yield put(mintTokensSuccess(mintedTokens));
-    } catch (error) {
-      yield put(mintTokensFailure(error));
-    }
+export default function* mintTokens(action: ActionTypes) {
+  try {
+    const account = yield select(getAccountFromState);
+    const ReviewDAOContract = yield select(getContractFromState);
+
+    console.log("mint parameters", account, ReviewDAOContract);
+    const mintedTokens = yield call(mint, account, ReviewDAOContract);
+
+    console.log("minted tokens: ", mintedTokens)
+    yield put(mintTokensSuccess(mintedTokens));
+  } catch (error) {
+    yield put(mintTokensFailure(error));
   }
+}

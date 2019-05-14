@@ -5,6 +5,13 @@ import checkBalance from './checkBalance'
 import mintTokens from './mintTokens'
 import transfer from './transfer'
 
+
+export interface ReviewCoinSaga {
+    web3: any,
+    ReviewDAOContract: any,
+    address: string
+}
+
 /*
     Root saga that spins up worker sagas to handle contract events
 */

@@ -25,10 +25,9 @@ export default function* transfer(action: ActionTypes) {
 
         // Token transfers require approval prior to sending the transaction
         const isApproved = yield call(approveTransaction, account, ReviewDAOContract);
-        console.log(isApproved)
 
         if(isApproved) {
-            const sendTransaction = yield call(approveTransaction, account, ReviewDAOContract);
+            // const sendTransaction = yield call(approveTransaction, account, ReviewDAOContract);
             yield put(transferTokenSuccess());
         }
 
