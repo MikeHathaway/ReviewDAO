@@ -1,5 +1,10 @@
 import { action } from 'typesafe-actions';
 
+import { ActionType } from 'typesafe-actions';
+import * as actions from './actions';
+
+export type ActionTypes = ActionType<typeof actions>;
+
 // Async Actions for initial connection to the Smart Contract
 export const CONNECT_WEB3 = 'CONNECT_WEB3';
 export const CONNECT_WEB3_SUCCESS = 'CONNECT_WEB3_SUCCESS';

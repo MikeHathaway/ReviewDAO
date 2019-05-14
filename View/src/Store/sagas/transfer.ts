@@ -1,20 +1,15 @@
 import { call, put, select } from 'redux-saga/effects'
-import { ActionType } from 'typesafe-actions';
 
 import {
+    ActionTypes,
     transferTokenSuccess,
     transferTokenFailure
 } from '../actions';
 
-export type ActionTypes = ActionType<typeof transferTokenSuccess>;
-
-
-/** 
-    State selectors
-*/
-const getWeb3FromState = (state: any) => state.mycurrency.web3;
-const getContractFromState = (state: any) => state.mycurrency.ReviewDAOContract;
-const getAccountFromState = (state: any) => state.mycurrency.account;
+import {
+    getAccountFromState,
+    getContractFromState
+} from '../selectors'
 
 /** 
     Effects for sending a token transaction

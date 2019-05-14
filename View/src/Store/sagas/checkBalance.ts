@@ -1,21 +1,16 @@
 import { call, put, select } from 'redux-saga/effects'
-import { ActionType } from 'typesafe-actions';
 
 import {
+    ActionTypes,
     checkBalanceSuccess,
     checkBalanceFailure
 } from '../actions'
 
-export type ActionTypes = ActionType<typeof checkBalanceSuccess>;
-
-
-/** 
-    State selectors
-*/
-const getWeb3FromState = (state: any) => state.mycurrency.web3;
-const getContractFromState = (state: any) => state.mycurrency.ReviewDAOContract;
-const getAccountFromState = (state: any) => state.mycurrency.account;
-
+import {
+    getWeb3FromState,
+    getAccountFromState,
+    getContractFromState
+} from '../selectors'
 
 /** 
     Effects for checking an accounts balance

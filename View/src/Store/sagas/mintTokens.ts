@@ -1,27 +1,27 @@
 import { call, put, select } from 'redux-saga/effects'
-import { ActionType } from 'typesafe-actions';
 
 import {
+    ActionTypes,
     mintTokensSuccess,
     mintTokensFailure
 } from '../actions'
 
-export type ActionTypes = ActionType<typeof mintTokensSuccess>;
-
-
-/*
-    State selectors
-*/
-const getWeb3FromState = (state: any) => state.mycurrency.web3;
-const getContractFromState = (state: any) => state.mycurrency.ReviewDAOContract;
-const getAccountFromState = (state: any) => state.mycurrency.account;
-
+import {
+    getAccountFromState,
+    getContractFromState
+} from '../selectors'
 
 /** 
     Add tokens to users address
 */
 function addMinter(address: string, ReviewDAOContract: any) {
+    const addMinterPromise = ReviewDAOContract.methods.addMinter(address)
+        .then((addMinterStatus: any) => {
+            console.log("add minter successful", addMinterStatus)
+            return addMinterStatus;
+        })
 
+    return Promise.resolve(addMinterPromise);
 }
 
 function mint(account: string, ReviewDAOContract: any) {

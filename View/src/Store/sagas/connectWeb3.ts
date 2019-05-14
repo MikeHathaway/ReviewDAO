@@ -1,16 +1,15 @@
 import { call, put, select } from 'redux-saga/effects'
 import Web3 from "web3";
-import { ActionType } from 'typesafe-actions';
 
 import {
+    ActionTypes,
     connectWeb3Success,
-    connectWeb3Failure,
+    connectWeb3Failure
 } from '../actions'
 
 // Import ABI from compiled smart contracts
 import reviewCoinABI from "../abi/ReviewCoin.json"
 
-export type ActionTypes = ActionType<typeof connectWeb3Success>;
 declare global {
     interface Window { web3: any, ethereum: any }
 }
