@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
 
 import {
-    ActionTypes,
+    Action,
     checkBalanceSuccess,
     checkBalanceFailure
 } from '../actions'
@@ -28,7 +28,7 @@ function getTokenBalanceForAddress(address: string, ReviewDAOContract: any) {
   return Promise.resolve(tokenBalance);
 }
 
-export default function* checkBalance(action: ActionTypes) {
+export default function* checkBalance(action: Action) {
     try {
         const web3 = yield select(getWeb3FromState);
         const address = yield select(getAccountFromState);

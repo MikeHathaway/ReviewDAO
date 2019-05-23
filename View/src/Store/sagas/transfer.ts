@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
 
 import {
-    ActionTypes,
+    Action,
     transferTokenSuccess,
     transferTokenFailure
 } from '../actions';
@@ -18,7 +18,7 @@ function approveTransaction(account: string, ReviewDAOContract: any){
     return Promise.resolve(ReviewDAOContract.methods.approve(account).call({}))
 }
 
-export default function* transfer(action: ActionTypes) {
+export default function* transfer(action: Action) {
     try {
         const account = yield select(getAccountFromState);
         const ReviewDAOContract = yield select(getContractFromState);

@@ -2,7 +2,7 @@ import { call, put, select } from 'redux-saga/effects'
 import Web3 from "web3";
 
 import {
-    ActionTypes,
+    Action,
     connectWeb3Success,
     connectWeb3Failure
 } from '../actions'
@@ -50,7 +50,7 @@ function connectContract(web3: any){
     return Promise.resolve(web3.eth.Contract(reviewCoinABI.abi,'0x441312C6737c611f0e537D25b1978361c1BdD732'));
 }
 
-export default function* connectWeb3(action: ActionTypes) {
+export default function* connectWeb3(action: Action) {
     try {
         const web3 = yield call(getWeb3);
         const account = yield call(getDefaultAccount, web3);

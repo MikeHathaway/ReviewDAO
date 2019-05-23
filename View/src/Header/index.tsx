@@ -1,9 +1,15 @@
 import React from 'react';
-import style from './index.css'
+// import style from './index.css'
 
-export default function Header (props) {
+type HeaderProps = {
+    mycurrency: {
+        token: Number
+    }
+}
+
+export default function Header (props: HeaderProps) {
     return (
-        <header className={style.AppHeader}>
+        <header>
             {/* <img src={logo} className={style.AppLogo} alt="logo" /> */}
                 <h1>
                     Review DAO

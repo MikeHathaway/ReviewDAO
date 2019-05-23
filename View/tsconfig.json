@@ -10,7 +10,8 @@
         "baseUrl": ".",
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "outDir": "out"
+        "outDir": "out",
+        "jsx": "react"
     },
     "include": [
         "src/**/*"

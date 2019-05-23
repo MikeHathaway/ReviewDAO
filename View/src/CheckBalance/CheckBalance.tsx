@@ -1,8 +1,14 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import styles from './index.css'
+import { Action } from '../Store/actions'
+// import styles from './index.css'
 
-export default function CheckBalance({checkBalance, mintTokens}){
+type CheckBalanceProps = {
+	checkBalance: any,
+	mintTokens: any
+}
+
+export default function CheckBalance({checkBalance, mintTokens}: CheckBalanceProps){
 
 	return (
 		<Button

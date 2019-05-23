@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
 
 import {
-    ActionTypes,
+    Action,
     mintTokensSuccess,
     mintTokensFailure
 } from '../actions'
@@ -39,7 +39,7 @@ function mint(account: string, ReviewDAOContract: any) {
     return Promise.resolve(mintPromise);
   }
   
-export default function* mintTokens(action: ActionTypes) {
+export default function* mintTokens(action: Action) {
   try {
     const account = yield select(getAccountFromState);
     const ReviewDAOContract = yield select(getContractFromState);

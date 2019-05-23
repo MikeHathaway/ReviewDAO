@@ -1,7 +1,11 @@
 import { Spinner } from 'react-bootstrap';
 import React from 'react';
 
-export default function Loading ({isLoading}) {
+type LoadingProps = {
+    isLoading: any
+}
+
+export default function Loading ({isLoading}: LoadingProps) {
     if (isLoading){
         return (
             <Spinner animation="border" role="status">

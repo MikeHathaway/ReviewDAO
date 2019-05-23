@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 import CheckBalance from './CheckBalance/CheckBalance';
-import Header from './Header/index'
 import Loading from './Loading/index'
+import Header from './Header/index'
+import Landing from './Landing/index'
 import SendTransaction from './SendTransaction/SendTransaction'
+import { Action } from 'typesafe-actions';
 
-class App extends Component {
+type AppProps = {
+  connectWeb3: any,
+  mycurrency: {
+    isLoading: boolean,
+    token: Number
+  },
+  checkBalance: Action,
+  transferToken: Action,
+  mintTokens: Action
+}
+
+class App extends Component<AppProps> {
 
   componentDidMount() {
     const {
@@ -33,6 +46,7 @@ class App extends Component {
       <div className="App">
         <Loading isLoading={isLoading} />
         <Header mycurrency={mycurrency} />
+        <Landing />
         <CheckBalance checkBalance={checkBalance} mintTokens={mintTokens} />
         <SendTransaction transferToken={transferToken} />
       </div>
