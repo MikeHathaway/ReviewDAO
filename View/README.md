@@ -8,6 +8,7 @@ Research
 - https://ethereum.stackexchange.com/questions/47055/how-to-use-web3-js1-0-0-beta34-with-typescript
 - https://nehalist.io/dependency-injection-in-typescript/
 - https://medium.com/@christianq010/project-netflix-47408f7cb67d
+- https://github.com/styled-components/awesome-styled-components
 ===
 
 **Dev Tooling**

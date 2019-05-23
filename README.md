@@ -25,6 +25,7 @@ TODO:
 - `truffle console --network development` ->`JSON.stringify(DappToken.abi)`
 - https://medium.com/@pongsatt/how-to-develop-user-interface-for-smart-contract-using-react-1108314ebeeb
 - https://ethereum.stackexchange.com/questions/60546/using-web3-js-in-a-react-redux-saga-app-uncaught-at-check-call-error
+- https://enjoycss.com/start#boxShadow
 
 
 **Writing Smart Contracts**

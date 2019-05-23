@@ -11,9 +11,6 @@ export default function Header (props: HeaderProps) {
     return (
         <header>
             {/* <img src={logo} className={style.AppLogo} alt="logo" /> */}
-                <h1>
-                    Review DAO
-                </h1>
             <p>
                 Your balance: {props.mycurrency.token}
             </p>
