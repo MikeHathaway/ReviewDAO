@@ -23,7 +23,6 @@ export function web3Reducer(state: IReviewCoin = {account: '', token: 0, isLoadi
         case MINT_TOKENS_SUCCESS:
             const prevBalance = state.token || 0
             const newBalance = action.payload.token
-            console.log("balances", prevBalance, newBalance)
             const token = prevBalance + newBalance;
             
             return { ...state, token }          

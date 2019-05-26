@@ -17,7 +17,9 @@ TODO:
 - ERC223 token
 
 **React**
-
+- Redux Sagas
+- React Router
+- Styled Components
 
 ### Guides
 **Web3**
@@ -30,3 +32,6 @@ TODO:
 
 **Writing Smart Contracts**
 - http://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereums
+
+
+
