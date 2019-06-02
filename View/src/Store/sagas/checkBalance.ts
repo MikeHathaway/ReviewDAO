@@ -23,6 +23,7 @@ function getTokenBalanceForAddress(address: string, ReviewDAOContract: any) {
   const tokenBalance = ReviewDAOContract.methods.balanceOf(address).call({from: address})
     .then((balance: any) => {
       // console.log("converted balance from BigNumber", web3.utils.fromWei(balance.toNumber(), "ether"))
+      console.log("token balance", balance.toNumber())
       return balance.toNumber()
     })
   return Promise.resolve(tokenBalance);

@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import './App.css';
-import CheckBalance from './CheckBalance/CheckBalance';
-import Loading from './Loading/index'
-import Header from './Header/index'
-import Landing from './Landing/index'
-import SendTransaction from './SendTransaction/SendTransaction'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { ThemeProvider } from 'styled-components'
+
 import { Action } from 'typesafe-actions';
 
+import Landing from './Landing/index'
+import TokenManager from './TokenManager'
+import './App.css';
+import theme from './theme'
+
+
+// TODO: set type to Action
 type AppProps = {
-  connectWeb3: any,
-  mycurrency: {
-    isLoading: boolean,
-    token: Number
-  },
-  checkBalance: Action,
-  transferToken: Action,
-  mintTokens: Action
+  connectWeb3: any
 }
+
+
 
 class App extends Component<AppProps> {
 
@@ -30,25 +29,15 @@ class App extends Component<AppProps> {
   }
 
   render() {
-    const {
-      mycurrency,
-      mycurrency: {
-        isLoading
-      },
-      checkBalance,
-      transferToken,
-      mintTokens
-    } = this.props;
-
-    console.log("web3 props", this.props)
-
     return (
       <div className="App">
-        <Loading isLoading={isLoading} />
-        <Header mycurrency={mycurrency} />
-        <Landing />
-        <CheckBalance checkBalance={checkBalance} mintTokens={mintTokens} />
-        <SendTransaction transferToken={transferToken} />
+        <Router>
+          <Route path="/" exact component={Landing} />
+          <Route path="/token-manager/" component={TokenManager} />
+        </Router>
+      {/* <ThemeProvider theme={theme}> */}
+
+      {/* </ThemeProvider> */}
       </div>
     );
   }

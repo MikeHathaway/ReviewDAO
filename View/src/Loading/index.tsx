@@ -1,4 +1,5 @@
-import { Spinner } from 'react-bootstrap';
+// import { Loader } from 'rimble-ui';
+const { Loader } = require('rimble-ui');
 import React from 'react';
 import styled from 'styled-components'
 
@@ -17,19 +18,15 @@ const Button = styled.div<ILoadingSpinner>`
 	color: palevioletred;
 	margin: 0.5em 1em;
 	padding: 0.25em 1em;
-
-        ${(props: any) => !props.loading`
-        background: palevioletred;
-        color: white;
-    `}
-  `
+`
 
 export default function Loading ({isLoading}: LoadingProps) {
     if (isLoading){
         return (
-            <Spinner animation="border" role="status">
-                <span className="sr-only">Loading...</span>
-            </Spinner>
+            <Loader 
+                color="blue"
+                size="80px"
+            />
         )
     }
     else {

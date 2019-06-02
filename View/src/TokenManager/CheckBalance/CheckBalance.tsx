@@ -19,11 +19,13 @@ const Button = styled.button<IButton>`
 	margin: 0.5em 1em;
 	padding: 0.25em 1em;
 
-	${(props: any) => props.selected`
-    background: palevioletred;
-    color: white;
-  `}
+
 `
+
+// ${(props: any) => props.selected`
+// background: palevioletred;
+// color: white;
+// `}
 
 export default function CheckBalance({checkBalance, mintTokens}: CheckBalanceProps){
 
