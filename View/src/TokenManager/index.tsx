@@ -29,6 +29,8 @@ export default function TokenManager(props: TokenManagerProps) {
         mintTokens
     } = props;
 
+    console.log('non history props', props)
+
     return (
         <Route
             path="/token-manager/"
