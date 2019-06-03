@@ -5,17 +5,19 @@ import { ThemeProvider } from 'styled-components'
 import { Action } from 'typesafe-actions';
 
 import Landing from './Landing/index'
-import TokenManager from './TokenManager'
+import TokenManager, { TokenManagerProps } from './TokenManager'
 import './App.css';
 import theme from './theme'
 
 
 // TODO: set type to Action
-type AppProps = {
+// type AppProps = {
+//   connectWeb3: any
+// }
+
+interface AppProps extends TokenManagerProps {
   connectWeb3: any
 }
-
-
 
 class App extends Component<AppProps> {
 
@@ -32,8 +34,8 @@ class App extends Component<AppProps> {
     return (
       <div className="App">
         <Router>
-          <Route path="/" exact component={Landing} />
-          <Route path="/token-manager/" component={TokenManager} />
+          <Landing />
+          <TokenManager {...this.props}/>
         </Router>
       {/* <ThemeProvider theme={theme}> */}
 

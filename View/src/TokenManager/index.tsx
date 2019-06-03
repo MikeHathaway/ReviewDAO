@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, RouteComponentProps } from 'react-router-dom'
 import { Action } from 'typesafe-actions';
 
 import SendTransaction from './SendTransaction/SendTransaction'
@@ -6,7 +7,8 @@ import CheckBalance from './CheckBalance/CheckBalance';
 import Loading from '../Loading/index'
 import Header from './Header/index'
 
-type TokenManagerProps = {
+// have the interface expand react router props
+export interface TokenManagerProps extends RouteComponentProps {
     mycurrency: {
       isLoading: boolean,
       token: Number
@@ -14,13 +16,13 @@ type TokenManagerProps = {
     checkBalance: Action,
     transferToken: Action,
     mintTokens: Action
-  }
+}
   
 export default function TokenManager(props: TokenManagerProps) {
     const {
         mycurrency,
         mycurrency: {
-        isLoading
+            isLoading
         },
         checkBalance,
         transferToken,
@@ -28,11 +30,17 @@ export default function TokenManager(props: TokenManagerProps) {
     } = props;
 
     return (
-        <div>
-            <Loading isLoading={isLoading} />
-            <Header mycurrency={mycurrency} />
-            <CheckBalance checkBalance={checkBalance} mintTokens={mintTokens} />
-            <SendTransaction transferToken={transferToken} />
-        </div>
+        <Route
+            path="/token-manager/"
+            render={(props) => {
+                console.log("token manager props", props)
+                return <div>
+                        <Loading isLoading={isLoading} />
+                        <Header mycurrency={mycurrency} />
+                        <CheckBalance checkBalance={checkBalance} mintTokens={mintTokens} />
+                        <SendTransaction transferToken={transferToken} />
+                </div>
+            }}
+        />
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Action } from '../Store/actions'
+import { Action } from '../../Store/actions'
 import styled from 'styled-components'
 
 type CheckBalanceProps = {
@@ -28,7 +28,6 @@ const Button = styled.button<IButton>`
 // `}
 
 export default function CheckBalance({checkBalance, mintTokens}: CheckBalanceProps){
-
 	return (
 		<Button
 			onClick={() => {
