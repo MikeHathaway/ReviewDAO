@@ -17,7 +17,8 @@ export interface TokenManagerProps extends RouteComponentProps {
     transferToken: Action,
     mintTokens: Action
 }
-  
+
+// TODO: Fire connectWeb3 from within TokenManager function
 export default function TokenManager(props: TokenManagerProps) {
     const {
         mycurrency,
